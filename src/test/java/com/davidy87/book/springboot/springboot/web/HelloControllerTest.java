@@ -4,6 +4,7 @@ import com.davidy87.book.springboot.web.HelloController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,6 +17,7 @@ class HelloControllerTest {
     MockMvc mvc;
 
     @Test
+    @WithMockUser(roles = "USER")
     public void returnHello() throws Exception {
         String hello = "hello";
 
@@ -25,6 +27,7 @@ class HelloControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void returnHelloDto() throws Exception {
         String name = "hello";
         int amount = 1000;

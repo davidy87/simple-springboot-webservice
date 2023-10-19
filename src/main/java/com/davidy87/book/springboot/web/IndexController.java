@@ -1,5 +1,6 @@
 package com.davidy87.book.springboot.web;
 
+import com.davidy87.book.springboot.config.auth.dto.SessionUser;
 import com.davidy87.book.springboot.web.dto.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,13 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(@SessionAttribute(required = false) SessionUser user, Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
+
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 
