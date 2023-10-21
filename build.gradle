@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.davidy87.book'
-version = '1.0.4-SNAPSHOT'
+version = '3.0.0-SNAPSHOT'
 
 configurations {
     compileOnly {
