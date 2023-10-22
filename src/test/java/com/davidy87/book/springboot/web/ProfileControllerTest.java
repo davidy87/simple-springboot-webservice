@@ -24,7 +24,7 @@ public class ProfileControllerTest {
     @Test
     @DisplayName("profile은 인증없이 호출된다.")
     void callProfile() {
-        String expected = "default";
+        String expected = "oauth";
 
         ResponseEntity<String> response = restTemplate.getForEntity("/profile", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
